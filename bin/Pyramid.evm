@@ -1,0 +1,619 @@
+    /* "pyramid.sol":29:1566  contract Pyramid {... */
+  mstore(0x40, 0x60)
+    /* "pyramid.sol":228:345  function Pyramid() {... */
+  jumpi(tag_1, iszero(callvalue))
+  invalid
+tag_1:
+tag_2:
+    /* "pyramid.sol":258:264  master */
+  0x0
+    /* "pyramid.sol":258:277  master = msg.sender */
+  dup1
+  sload
+  not(sub(exp(0x2, 0xa0), 0x1))
+  and
+    /* "pyramid.sol":267:277  msg.sender */
+  caller
+  sub(exp(0x2, 0xa0), 0x1)
+    /* "pyramid.sol":258:277  master = msg.sender */
+  and
+  or
+  swap1
+  sstore
+  0x1
+    /* "pyramid.sol":288:312  memberQueue.push(master) */
+  dup1
+  sload
+  dup1
+  dup3
+  add
+  tag_4
+  dup4
+  dup3
+  jump	// in(tag_5)
+tag_4:
+  swap2
+  0x0
+  mstore
+  sha3(0x0, 0x20)
+  swap1
+  add
+  0x0
+tag_6:
+    /* "pyramid.sol":305:311  master */
+  0x0
+  dup1
+  sload
+    /* "pyramid.sol":288:312  memberQueue.push(master) */
+  dup4
+  sload
+    /* "pyramid.sol":305:311  master */
+  0x100
+    /* "pyramid.sol":288:312  memberQueue.push(master) */
+  swap4
+  swap1
+  swap4
+  exp
+  sub(exp(0x2, 0xa0), 0x1)
+    /* "pyramid.sol":305:311  master */
+  swap2
+  dup3
+  and
+    /* "pyramid.sol":288:312  memberQueue.push(master) */
+  dup2
+  mul
+  swap2
+  mul
+  not
+  swap1
+  swap3
+  and
+  swap2
+  swap1
+  swap2
+  or
+  swap1
+  swap2
+  sstore
+    /* "pyramid.sol":323:333  queueFront */
+  0x2
+    /* "pyramid.sol":323:337  queueFront = 0 */
+  sstore
+  pop
+    /* "pyramid.sol":228:345  function Pyramid() {... */
+tag_3:
+    /* "pyramid.sol":29:1566  contract Pyramid {... */
+  jump(tag_7)
+tag_5:
+  dup2
+  sload
+  dup2
+  dup4
+  sstore
+  dup2
+  dup2
+  iszero
+  gt
+  tag_9
+  jumpi
+  0x0
+  dup4
+  dup2
+  mstore
+  0x20
+  swap1
+  sha3
+  tag_9
+  swap2
+  dup2
+  add
+  swap1
+  dup4
+  add
+  jump	// in(tag_10)
+tag_9:
+tag_8:
+  pop
+  pop
+  pop
+  jump	// out
+tag_10:
+  tag_11
+  swap2
+  swap1
+tag_12:
+  dup1
+  dup3
+  gt
+  iszero
+  tag_13
+  jumpi
+  0x0
+  dup2
+  sstore
+  0x1
+  add
+  jump(tag_12)
+tag_13:
+  pop
+  swap1
+  jump
+tag_11:
+  swap1
+  jump	// out
+tag_7:
+  dataSize(sub_0)
+  dup1
+  dataOffset(sub_0)
+  0x0
+  codecopy
+  0x0
+  return
+stop
+
+sub_0: assembly {
+        /* "pyramid.sol":29:1566  contract Pyramid {... */
+      mstore(0x40, 0x60)
+      jumpi(tag_1, iszero(calldatasize))
+      and(div(calldataload(0x0), 0x100000000000000000000000000000000000000000000000000000000), 0xffffffff)
+      0x26fae0d3
+      dup2
+      eq
+      tag_2
+      jumpi
+      dup1
+      0xb688a363
+      eq
+      tag_3
+      jumpi
+      dup1
+      0xe941fa78
+      eq
+      tag_4
+      jumpi
+    tag_1:
+      jumpi(tag_5, iszero(callvalue))
+      invalid
+    tag_5:
+      tag_6
+        /* "pyramid.sol":455:467  function(){} */
+    tag_7:
+    tag_8:
+      jump	// out
+        /* "pyramid.sol":29:1566  contract Pyramid {... */
+    tag_6:
+      stop
+        /* "pyramid.sol":1479:1561  function setMaster(address _master) onlymaster {... */
+    tag_2:
+      jumpi(tag_9, iszero(callvalue))
+      invalid
+    tag_9:
+      tag_6
+      and(calldataload(0x4), sub(exp(0x2, 0xa0), 0x1))
+      jump(tag_11)
+    tag_10:
+      stop
+        /* "pyramid.sol":675:1381  function join() payable {... */
+    tag_3:
+      tag_6
+      jump(tag_13)
+    tag_12:
+      stop
+        /* "pyramid.sol":1389:1471  function withdrawFee() onlymaster {... */
+    tag_4:
+      jumpi(tag_14, iszero(callvalue))
+      invalid
+    tag_14:
+      tag_6
+      jump(tag_16)
+    tag_15:
+      stop
+        /* "pyramid.sol":1479:1561  function setMaster(address _master) onlymaster {... */
+    tag_11:
+        /* "pyramid.sol":208:214  master */
+      sload(0x0)
+        /* "pyramid.sol":194:204  msg.sender */
+      caller
+      sub(exp(0x2, 0xa0), 0x1)
+        /* "pyramid.sol":194:214  msg.sender == master */
+      swap1
+      dup2
+      and
+        /* "pyramid.sol":208:214  master */
+      swap2
+      and
+        /* "pyramid.sol":194:214  msg.sender == master */
+      eq
+        /* "pyramid.sol":190:217  if (msg.sender == master) _ */
+      iszero
+      tag_19
+      jumpi
+        /* "pyramid.sol":1537:1543  master */
+      0x0
+        /* "pyramid.sol":1537:1553  master = _master */
+      dup1
+      sload
+      not(0xffffffffffffffffffffffffffffffffffffffff)
+      and
+      sub(exp(0x2, 0xa0), 0x1)
+      dup4
+      and
+      or
+      swap1
+      sstore
+        /* "pyramid.sol":216:217  _ */
+    tag_19:
+        /* "pyramid.sol":190:217  if (msg.sender == master) _ */
+    tag_18:
+        /* "pyramid.sol":1479:1561  function setMaster(address _master) onlymaster {... */
+    tag_17:
+      pop
+      jump	// out
+        /* "pyramid.sol":675:1381  function join() payable {... */
+    tag_13:
+        /* "pyramid.sol":899:918  address memberToPay */
+      0x0
+        /* "pyramid.sol":786:796  100 finney */
+      0x16345785d8a0000
+        /* "pyramid.sol":773:782  msg.value */
+      callvalue
+        /* "pyramid.sol":773:796  msg.value >= 100 finney */
+      lt
+      iszero
+        /* "pyramid.sol":765:797  require(msg.value >= 100 finney) */
+      tag_21
+      jumpi
+      revert(0x0, 0x0)
+    tag_21:
+        /* "pyramid.sol":810:821  memberQueue */
+      0x1
+        /* "pyramid.sol":810:838  memberQueue.push(msg.sender) */
+      dup1
+      sload
+      dup1
+      dup3
+      add
+      tag_22
+        /* "pyramid.sol":810:821  memberQueue */
+      dup4
+        /* "pyramid.sol":810:838  memberQueue.push(msg.sender) */
+      dup3
+      jump	// in(tag_23)
+    tag_22:
+      swap2
+      0x0
+      mstore
+      sha3(0x0, 0x20)
+      swap1
+      add
+      0x0
+    tag_24:
+      dup2
+      sload
+      sub(exp(0x2, 0xa0), 0x1)
+        /* "pyramid.sol":827:837  msg.sender */
+      caller
+        /* "pyramid.sol":810:838  memberQueue.push(msg.sender) */
+      dup2
+      and
+      0x100
+      swap4
+      swap1
+      swap4
+      exp
+      swap3
+      dup4
+      mul
+      swap3
+      mul
+      not
+      and
+      or
+      swap1
+      sstore
+      pop
+      0x1
+        /* "pyramid.sol":855:873  memberQueue.length */
+      sload
+        /* "pyramid.sol":876:877  2 */
+      0x2
+      swap1
+        /* "pyramid.sol":855:877  memberQueue.length % 2 */
+    tag_25:
+      mod
+        /* "pyramid.sol":881:882  1 */
+      0x1
+        /* "pyramid.sol":855:882  memberQueue.length % 2 == 1 */
+      eq
+        /* "pyramid.sol":851:1192  if (memberQueue.length % 2 == 1) {... */
+      iszero
+      tag_26
+      jumpi
+        /* "pyramid.sol":921:932  memberQueue */
+      0x1
+        /* "pyramid.sol":933:943  queueFront */
+      sload(0x2)
+        /* "pyramid.sol":921:944  memberQueue[queueFront] */
+      dup2
+      sload
+      dup2
+      lt
+      iszero
+      iszero
+      tag_27
+      jumpi
+      invalid
+    tag_27:
+      swap1
+      0x0
+      mstore
+      sha3(0x0, 0x20)
+      swap1
+      add
+      0x0
+    tag_28:
+      swap1
+      sload
+        /* "pyramid.sol":959:969  queueFront */
+      0x2
+        /* "pyramid.sol":959:974  queueFront += 1 */
+      dup1
+      sload
+        /* "pyramid.sol":973:974  1 */
+      0x1
+        /* "pyramid.sol":959:974  queueFront += 1 */
+      add
+      swap1
+      sstore
+        /* "pyramid.sol":1117:1145  memberToPay.send(180 finney) */
+      mload(0x40)
+        /* "pyramid.sol":921:944  memberQueue[queueFront] */
+      0x100
+      swap3
+      swap1
+      swap3
+      exp
+      swap1
+      div
+      sub(exp(0x2, 0xa0), 0x1)
+      and
+      swap2
+      pop
+      dup2
+      swap1
+      0x0
+      swap1
+        /* "pyramid.sol":1134:1144  180 finney */
+      0x27f7d0bdb920000
+      swap1
+      dup3
+        /* "pyramid.sol":1117:1145  memberToPay.send(180 finney) */
+      dup2
+      dup2
+      dup2
+        /* "pyramid.sol":1134:1144  180 finney */
+      dup6
+        /* "pyramid.sol":921:944  memberQueue[queueFront] */
+      dup9
+      dup4
+        /* "pyramid.sol":1117:1145  memberToPay.send(180 finney) */
+      call
+      pop
+      pop
+      pop
+      pop
+      pop
+        /* "pyramid.sol":851:1192  if (memberQueue.length % 2 == 1) {... */
+    tag_26:
+        /* "pyramid.sol":1204:1222  Joined(msg.sender) */
+      0x40
+      dup1
+      mload
+      sub(exp(0x2, 0xa0), 0x1)
+        /* "pyramid.sol":1211:1221  msg.sender */
+      caller
+        /* "pyramid.sol":1204:1222  Joined(msg.sender) */
+      and
+      dup2
+      mstore
+      swap1
+      mload
+      0x7073afa60b48e833a1a66ebb442bc8e0d19e9f3cc05f34bdcd1da22c8d87f275
+      swap2
+      dup2
+      swap1
+      sub
+      0x20
+      add
+      swap1
+      log1
+        /* "pyramid.sol":1296:1306  100 finney */
+      0x16345785d8a0000
+        /* "pyramid.sol":1284:1293  msg.value */
+      callvalue
+        /* "pyramid.sol":1284:1306  msg.value > 100 finney */
+      gt
+        /* "pyramid.sol":1280:1374  if (msg.value > 100 finney) {... */
+      iszero
+      tag_19
+      jumpi
+        /* "pyramid.sol":1323:1362  msg.sender.send(msg.value - 100 finney) */
+      mload(0x40)
+      sub(exp(0x2, 0xa0), 0x1)
+        /* "pyramid.sol":1323:1333  msg.sender */
+      caller
+        /* "pyramid.sol":1323:1338  msg.sender.send */
+      and
+      swap1
+      not(0x16345785d89ffff)
+        /* "pyramid.sol":1339:1348  msg.value */
+      callvalue
+        /* "pyramid.sol":1339:1361  msg.value - 100 finney */
+      add
+        /* "pyramid.sol":1323:1362  msg.sender.send(msg.value - 100 finney) */
+      dup1
+      iszero
+      0x8fc
+      mul
+      swap2
+      0x0
+      dup2
+      dup2
+      dup2
+        /* "pyramid.sol":1339:1361  msg.value - 100 finney */
+      dup6
+        /* "pyramid.sol":1323:1338  msg.sender.send */
+      dup9
+        /* "pyramid.sol":1323:1362  msg.sender.send(msg.value - 100 finney) */
+      dup9
+      call
+      pop
+      pop
+      pop
+      pop
+      pop
+        /* "pyramid.sol":1280:1374  if (msg.value > 100 finney) {... */
+    tag_29:
+        /* "pyramid.sol":675:1381  function join() payable {... */
+    tag_20:
+      pop
+      jump	// out
+        /* "pyramid.sol":1389:1471  function withdrawFee() onlymaster {... */
+    tag_16:
+        /* "pyramid.sol":208:214  master */
+      sload(0x0)
+        /* "pyramid.sol":194:204  msg.sender */
+      caller
+      sub(exp(0x2, 0xa0), 0x1)
+        /* "pyramid.sol":194:214  msg.sender == master */
+      swap1
+      dup2
+      and
+        /* "pyramid.sol":208:214  master */
+      swap2
+      and
+        /* "pyramid.sol":194:214  msg.sender == master */
+      eq
+        /* "pyramid.sol":190:217  if (msg.sender == master) _ */
+      iszero
+      tag_7
+      jumpi
+        /* "pyramid.sol":1434:1440  master */
+      0x0
+      dup1
+      sload
+        /* "pyramid.sol":1434:1463  master.transfer(this.balance) */
+      mload(0x40)
+      sub(exp(0x2, 0xa0), 0x1)
+        /* "pyramid.sol":1434:1440  master */
+      swap2
+      dup3
+      and
+      swap3
+        /* "pyramid.sol":1450:1454  this */
+      address
+        /* "pyramid.sol":1450:1462  this.balance */
+      swap1
+      swap3
+      and
+      balance
+        /* "pyramid.sol":1434:1463  master.transfer(this.balance) */
+      dup1
+      iszero
+      0x8fc
+      mul
+      swap3
+        /* "pyramid.sol":1450:1462  this.balance */
+      swap1
+      swap2
+        /* "pyramid.sol":1434:1463  master.transfer(this.balance) */
+      swap1
+      dup2
+        /* "pyramid.sol":1434:1440  master */
+      dup2
+        /* "pyramid.sol":1434:1463  master.transfer(this.balance) */
+      dup2
+        /* "pyramid.sol":1450:1462  this.balance */
+      dup6
+        /* "pyramid.sol":1434:1440  master */
+      dup9
+        /* "pyramid.sol":1434:1463  master.transfer(this.balance) */
+      dup9
+      call
+      swap4
+      pop
+      pop
+      pop
+      pop
+      iszero
+      iszero
+      tag_7
+      jumpi
+      invalid
+    tag_33:
+        /* "pyramid.sol":216:217  _ */
+    tag_32:
+        /* "pyramid.sol":190:217  if (msg.sender == master) _ */
+    tag_31:
+        /* "pyramid.sol":1389:1471  function withdrawFee() onlymaster {... */
+    tag_30:
+      jump	// out
+        /* "pyramid.sol":29:1566  contract Pyramid {... */
+    tag_23:
+      dup2
+      sload
+      dup2
+      dup4
+      sstore
+      dup2
+      dup2
+      iszero
+      gt
+      tag_35
+      jumpi
+      0x0
+      dup4
+      dup2
+      mstore
+      0x20
+      swap1
+      sha3
+      tag_35
+      swap2
+      dup2
+      add
+      swap1
+      dup4
+      add
+      jump	// in(tag_36)
+    tag_35:
+    tag_34:
+      pop
+      pop
+      pop
+      jump	// out
+    tag_36:
+      tag_37
+      swap2
+      swap1
+    tag_38:
+      dup1
+      dup3
+      gt
+      iszero
+      tag_39
+      jumpi
+      0x0
+      dup2
+      sstore
+      0x1
+      add
+      jump(tag_38)
+    tag_39:
+      pop
+      swap1
+      jump
+    tag_37:
+      swap1
+      jump	// out
+}
