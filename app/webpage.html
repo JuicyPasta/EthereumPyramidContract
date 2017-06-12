@@ -1,0 +1,224 @@
+<html>
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flipclock/0.7.8/flipclock.min.css" integrity="sha256-MSeNrYhmfZbyTUAhVy7w153T7LFxQfCf/DBDjtbvZdg=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.7.1/showdown.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flipclock/0.7.8/flipclock.min.js" integrity="sha256-zZFgUYWREnXJDw3PMQASiGmzHVL+VNfcA5eaXhipwag=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="../dist/bundle.js"></script>
+</head>
+
+
+<body>
+
+<div class="counter card">
+    <h1 class="serving">Now Serving</h1>
+    <div class="clock"></div>
+</div>
+
+<div class="container">
+    <textarea class="hidden" id="markdown">
+
+Ethereum Pyramid Contract
+===========================
+
+The Ethereum Pyramid Contract is a smart contract on the Ethereum block chain.
+
+# How it works
+
+This Ethereum Smart Contract is simple. When you send money to the address, you enter the back of the queue. Your money is then used to automatically pay the person in the front of the line. Once the person in the front of the line is paid twice, the process moves on to the next person and they will recieve the next two payments from people entering the queue.
+
+![image](../static/Pyramid.png)
+
+# What is a contract
+
+An ethereum contract is a piece of code that is locked into the blockchain and unchangable. This means the code you see is lock in place forever, free from tampering.
+
+
+# How to participate
+```
+destination address: 0xdeadbeef
+transaction data: 0xdeadbeef
+```
+
+You can put in any amount of Ethereum between .1 and 5 (do not worry about sending extra to the contract will automatically give it back :) ).
+
+
+# Risk
+
+The only risk involved in joining this project is if no one else joins after you, so please, share this on social media and help the pyramid grow.
+
+
+
+    </textarea>
+    <div class="col-md-9 section" id="markdown-html">
+    </div>
+
+
+    <div class="sidebar col-md-3 section">
+        <div class="ztop">
+            <h3>Check position in line</h3>
+            <div class="card get-position-div">
+                <div class="form-inline">
+                    <div class="form-group">
+                        <label for="inputPassword2" class="sr-only">Address</label>
+                        <input type="text" class="form-control" id="inputAddress" placeholder="Address">
+                    </div>
+                    <button type="submit" class="get-position btn btn-primary">Get position</button>
+                </div>
+
+                <p class="spinner">searching blockchain please wait...</p>
+                <div class="position-response-area">
+                    <ul class="position-response"></ul>
+                </div>
+
+            </div>
+
+            <br>
+
+            <a href="https://github.com/JuicyPasta/EthereumPyramidContract/blob/master/pyramid.sol" class="large-button btn btn-primary">
+                View contract on
+                <br>
+                <strong>Github</strong>
+            </a>
+            <a class="large-button btn btn-primary">
+                View contract on
+                <br>
+                <strong>Blockchain</strong>
+            </a>
+        </div>
+    </div>
+
+</div>
+
+</body>
+
+
+<style>
+    .ztop {
+        position:absolute;
+        z-index: 9999;
+    }
+    #markdown-html {
+        padding-right: 50px;
+    }
+
+    .sidebar {
+
+        background: url('https://pages-themes.github.io/architect/assets/images/sidebar-bg.jpg') transparent 0 0 no-repeat;
+        padding-left: 20px;
+        min-height: 500px;
+        float:right;
+
+    }
+    .large-button {
+        display: inline-block;
+        width: 150px;
+        margin-bottom: 10px;
+        line-height: 1.2;
+        padding: 10px;
+        /*background-image: linear-gradient(to bottom,#563d7c 0,#6f5499 100%);*/
+    }
+    .btn {
+
+        background-image: linear-gradient(to bottom,#563d7c 0,#6f5499 100%);
+    }
+    .large-button > strong {
+        font-size: 1.5em;
+    }
+    .get-position-div {
+        padding: 5px !important;
+    }
+    #inputAddress {
+        margin-bottom: 10px;
+    }
+    .section {
+        padding: 15px;
+    }
+
+
+    .position-response-area {
+        position: relative;
+    }
+
+    .position-response {
+        list-style: none;
+        margin: 0px;
+        padding: 0px;
+        max-height: 500px;
+    }
+
+    .position-response > li {
+        padding: 5px;
+    }
+
+    .position-response > li:not(:last-child) {
+        border-bottom: 1px solid #bdbdbd;
+    }
+
+
+
+
+    .check-position {
+        background-color: gray;
+        border: 1px black solid;
+        border-radius: 5px;
+
+    }
+    body {
+        background-color: mediumpurbple;
+    }
+    .info {
+        border: solid black 1px;
+    }
+    .serving {
+        display: inline-block;
+        color: white;
+        font-size: 45px;
+        position: absolute;
+        top: 55px;
+        left: 230px;
+
+    }
+    .clock {
+        display: inline-block;
+        margin: auto;
+        width: 50%;
+        position: absolute;
+        top: 45px;
+        left: 530px;
+    }
+    .counter {
+        z-index: 9999;
+        background: black url("../static/banner.png") no-repeat top left;
+        height: 186px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        text-align: center;
+
+        position: relative;
+        top: 0px;
+        left: 0px;
+        color: black;
+    }
+
+    .card {
+        padding: 20px;
+    }
+
+    .position-response {
+        width: 100px;
+    }
+    .spinner {
+        padding-top: 15px;
+
+        display:none;
+    }
+    .hidden {
+        display: none;
+    }
+
+</style>
+
+</html>

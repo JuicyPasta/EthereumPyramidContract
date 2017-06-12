@@ -1,0 +1,437 @@
+PragmaDirective
+   Source: "pragma solidity ^0.4.0;"
+ContractDefinition "Pyramid"
+   Source: "contract Pyramid {\r\n    address master;\r\n\r\n    address[] memberQueue;\r\n    uint queueFront;\r\n\r\n    event Joined(address indexed _member, uint _entries, uint _paybackStartNum);\r\n\r\n    modifier onlymaster { if (msg.sender == master) _; }\r\n\r\n    function Pyramid() {\r\n        master = msg.sender;\r\n        memberQueue.push(master);\r\n        queueFront = 0;\r\n    }\r\n\r\n    // fallback function, wont work to call join here bc we will run out of gas (2300 gas for send())\r\n    function(){}\r\n\r\n    // users are allowed to join with .1 - 2 ethereum\r\n    function join() payable {\r\n        require(msg.value >= 100 finney);\r\n\r\n        uint entries = msg.value / 100 finney;\r\n        entries = entries > 20 ? 20 : entries; // cap at 2 ethereum\r\n\r\n        for (uint i = 0; i < entries; i++) {\r\n            memberQueue.push(msg.sender);\r\n\r\n            if (memberQueue.length % 2 == 1) {\r\n                memberQueue[queueFront].transfer(190 finney);\r\n\r\n                queueFront += 1;\r\n            }\r\n        }\r\n\r\n        Joined(msg.sender, entries, memberQueue.length * 2);\r\n\r\n        // send back any unused ethereum\r\n        uint remainder = msg.value - (entries * 100 finney);\r\n        if (remainder > 1 finney) {\r\n            msg.sender.transfer(remainder);\r\n        }\r\n        //msg.sender.send(msg.value - entries * 100 finney);\r\n    }\r\n\r\n    function drain() onlymaster {\r\n        master.transfer(this.balance);\r\n    }\r\n\r\n    function setMaster(address _master) onlymaster {\r\n        master = _master;\r\n    }\r\n}"
+  VariableDeclaration "master"
+     Type: address
+     Source: "address master"
+    ElementaryTypeName address
+       Source: "address"
+  VariableDeclaration "memberQueue"
+     Type: address[] storage ref
+     Source: "address[] memberQueue"
+    ArrayTypeName
+       Source: "address[]"
+      ElementaryTypeName address
+         Source: "address"
+  VariableDeclaration "queueFront"
+     Type: uint256
+     Source: "uint queueFront"
+    ElementaryTypeName uint
+       Source: "uint"
+  EventDefinition "Joined"
+     Source: "event Joined(address indexed _member, uint _entries, uint _paybackStartNum);"
+    ParameterList
+       Source: "(address indexed _member, uint _entries, uint _paybackStartNum)"
+      VariableDeclaration "_member"
+         Type: address
+         Source: "address indexed _member"
+        ElementaryTypeName address
+           Source: "address"
+      VariableDeclaration "_entries"
+         Type: uint256
+         Source: "uint _entries"
+        ElementaryTypeName uint
+           Source: "uint"
+      VariableDeclaration "_paybackStartNum"
+         Type: uint256
+         Source: "uint _paybackStartNum"
+        ElementaryTypeName uint
+           Source: "uint"
+  ModifierDefinition "onlymaster"
+     Source: "modifier onlymaster { if (msg.sender == master) _; }"
+    ParameterList
+       Source: ""
+    Block
+       Source: "{ if (msg.sender == master) _; }"
+      IfStatement
+         Source: "if (msg.sender == master) _"
+        BinaryOperation using operator ==
+           Type: bool
+           Source: "msg.sender == master"
+          MemberAccess to member sender
+             Type: address
+             Source: "msg.sender"
+            Identifier msg
+               Type: msg
+               Source: "msg"
+          Identifier master
+             Type: address
+             Source: "master"
+        PlaceholderStatement
+           Source: "_"
+  FunctionDefinition "Pyramid" - public
+     Source: "function Pyramid() {\r\n        master = msg.sender;\r\n        memberQueue.push(master);\r\n        queueFront = 0;\r\n    }"
+    ParameterList
+       Source: "()"
+    ParameterList
+       Source: ""
+    Block
+       Source: "{\r\n        master = msg.sender;\r\n        memberQueue.push(master);\r\n        queueFront = 0;\r\n    }"
+      ExpressionStatement
+         Source: "master = msg.sender"
+        Assignment using operator =
+           Type: address
+           Source: "master = msg.sender"
+          Identifier master
+             Type: address
+             Source: "master"
+          MemberAccess to member sender
+             Type: address
+             Source: "msg.sender"
+            Identifier msg
+               Type: msg
+               Source: "msg"
+      ExpressionStatement
+         Source: "memberQueue.push(master)"
+        FunctionCall
+           Type: uint256
+           Source: "memberQueue.push(master)"
+          MemberAccess to member push
+             Type: function (address) returns (uint256)
+             Source: "memberQueue.push"
+            Identifier memberQueue
+               Type: address[] storage ref
+               Source: "memberQueue"
+          Identifier master
+             Type: address
+             Source: "master"
+      ExpressionStatement
+         Source: "queueFront = 0"
+        Assignment using operator =
+           Type: uint256
+           Source: "queueFront = 0"
+          Identifier queueFront
+             Type: uint256
+             Source: "queueFront"
+          Literal, token: [no token] value: 0
+             Type: int_const 0
+             Source: "0"
+  FunctionDefinition "" - public
+     Source: "function(){}"
+    ParameterList
+       Source: "()"
+    ParameterList
+       Source: ""
+    Block
+       Source: "{}"
+  FunctionDefinition "join" - public
+     Source: "function join() payable {\r\n        require(msg.value >= 100 finney);\r\n\r\n        uint entries = msg.value / 100 finney;\r\n        entries = entries > 20 ? 20 : entries; // cap at 2 ethereum\r\n\r\n        for (uint i = 0; i < entries; i++) {\r\n            memberQueue.push(msg.sender);\r\n\r\n            if (memberQueue.length % 2 == 1) {\r\n                memberQueue[queueFront].transfer(190 finney);\r\n\r\n                queueFront += 1;\r\n            }\r\n        }\r\n\r\n        Joined(msg.sender, entries, memberQueue.length * 2);\r\n\r\n        // send back any unused ethereum\r\n        uint remainder = msg.value - (entries * 100 finney);\r\n        if (remainder > 1 finney) {\r\n            msg.sender.transfer(remainder);\r\n        }\r\n        //msg.sender.send(msg.value - entries * 100 finney);\r\n    }"
+    ParameterList
+       Source: "()"
+    ParameterList
+       Source: ""
+    Block
+       Source: "{\r\n        require(msg.value >= 100 finney);\r\n\r\n        uint entries = msg.value / 100 finney;\r\n        entries = entries > 20 ? 20 : entries; // cap at 2 ethereum\r\n\r\n        for (uint i = 0; i < entries; i++) {\r\n            memberQueue.push(msg.sender);\r\n\r\n            if (memberQueue.length % 2 == 1) {\r\n                memberQueue[queueFront].transfer(190 finney);\r\n\r\n                queueFront += 1;\r\n            }\r\n        }\r\n\r\n        Joined(msg.sender, entries, memberQueue.length * 2);\r\n\r\n        // send back any unused ethereum\r\n        uint remainder = msg.value - (entries * 100 finney);\r\n        if (remainder > 1 finney) {\r\n            msg.sender.transfer(remainder);\r\n        }\r\n        //msg.sender.send(msg.value - entries * 100 finney);\r\n    }"
+      ExpressionStatement
+         Source: "require(msg.value >= 100 finney)"
+        FunctionCall
+           Type: tuple()
+           Source: "require(msg.value >= 100 finney)"
+          Identifier require
+             Type: function (bool)
+             Source: "require"
+          BinaryOperation using operator >=
+             Type: bool
+             Source: "msg.value >= 100 finney"
+            MemberAccess to member value
+               Type: uint256
+               Source: "msg.value"
+              Identifier msg
+                 Type: msg
+                 Source: "msg"
+            Literal, token: [no token] value: 100
+               Type: int_const 100000000000000000
+               Source: "100 finney"
+      VariableDeclarationStatement
+         Source: "uint entries = msg.value / 100 finney"
+        VariableDeclaration "entries"
+           Type: uint256
+           Source: "uint entries"
+          ElementaryTypeName uint
+             Source: "uint"
+        BinaryOperation using operator /
+           Type: uint256
+           Source: "msg.value / 100 finney"
+          MemberAccess to member value
+             Type: uint256
+             Source: "msg.value"
+            Identifier msg
+               Type: msg
+               Source: "msg"
+          Literal, token: [no token] value: 100
+             Type: int_const 100000000000000000
+             Source: "100 finney"
+      ExpressionStatement
+         Source: "entries = entries > 20 ? 20 : entries"
+        Assignment using operator =
+           Type: uint256
+           Source: "entries = entries > 20 ? 20 : entries"
+          Identifier entries
+             Type: uint256
+             Source: "entries"
+          Conditional
+             Type: uint256
+             Source: "entries > 20 ? 20 : entries"
+            BinaryOperation using operator >
+               Type: bool
+               Source: "entries > 20"
+              Identifier entries
+                 Type: uint256
+                 Source: "entries"
+              Literal, token: [no token] value: 20
+                 Type: int_const 20
+                 Source: "20"
+            Literal, token: [no token] value: 20
+               Type: int_const 20
+               Source: "20"
+            Identifier entries
+               Type: uint256
+               Source: "entries"
+      ForStatement
+         Source: "for (uint i = 0; i < entries; i++) {\r\n            memberQueue.push(msg.sender);\r\n\r\n            if (memberQueue.length % 2 == 1) {\r\n                memberQueue[queueFront].transfer(190 finney);\r\n\r\n                queueFront += 1;\r\n            }\r\n        }"
+        VariableDeclarationStatement
+           Source: "uint i = 0"
+          VariableDeclaration "i"
+             Type: uint256
+             Source: "uint i"
+            ElementaryTypeName uint
+               Source: "uint"
+          Literal, token: [no token] value: 0
+             Type: int_const 0
+             Source: "0"
+        BinaryOperation using operator <
+           Type: bool
+           Source: "i < entries"
+          Identifier i
+             Type: uint256
+             Source: "i"
+          Identifier entries
+             Type: uint256
+             Source: "entries"
+        ExpressionStatement
+           Source: "i++"
+          UnaryOperation (postfix) ++
+             Type: uint256
+             Source: "i++"
+            Identifier i
+               Type: uint256
+               Source: "i"
+        Block
+           Source: "{\r\n            memberQueue.push(msg.sender);\r\n\r\n            if (memberQueue.length % 2 == 1) {\r\n                memberQueue[queueFront].transfer(190 finney);\r\n\r\n                queueFront += 1;\r\n            }\r\n        }"
+          ExpressionStatement
+             Source: "memberQueue.push(msg.sender)"
+            FunctionCall
+               Type: uint256
+               Source: "memberQueue.push(msg.sender)"
+              MemberAccess to member push
+                 Type: function (address) returns (uint256)
+                 Source: "memberQueue.push"
+                Identifier memberQueue
+                   Type: address[] storage ref
+                   Source: "memberQueue"
+              MemberAccess to member sender
+                 Type: address
+                 Source: "msg.sender"
+                Identifier msg
+                   Type: msg
+                   Source: "msg"
+          IfStatement
+             Source: "if (memberQueue.length % 2 == 1) {\r\n                memberQueue[queueFront].transfer(190 finney);\r\n\r\n                queueFront += 1;\r\n            }"
+            BinaryOperation using operator ==
+               Type: bool
+               Source: "memberQueue.length % 2 == 1"
+              BinaryOperation using operator %
+                 Type: uint256
+                 Source: "memberQueue.length % 2"
+                MemberAccess to member length
+                   Type: uint256
+                   Source: "memberQueue.length"
+                  Identifier memberQueue
+                     Type: address[] storage ref
+                     Source: "memberQueue"
+                Literal, token: [no token] value: 2
+                   Type: int_const 2
+                   Source: "2"
+              Literal, token: [no token] value: 1
+                 Type: int_const 1
+                 Source: "1"
+            Block
+               Source: "{\r\n                memberQueue[queueFront].transfer(190 finney);\r\n\r\n                queueFront += 1;\r\n            }"
+              ExpressionStatement
+                 Source: "memberQueue[queueFront].transfer(190 finney)"
+                FunctionCall
+                   Type: tuple()
+                   Source: "memberQueue[queueFront].transfer(190 finney)"
+                  MemberAccess to member transfer
+                     Type: function (uint256)
+                     Source: "memberQueue[queueFront].transfer"
+                    IndexAccess
+                       Type: address
+                       Source: "memberQueue[queueFront]"
+                      Identifier memberQueue
+                         Type: address[] storage ref
+                         Source: "memberQueue"
+                      Identifier queueFront
+                         Type: uint256
+                         Source: "queueFront"
+                  Literal, token: [no token] value: 190
+                     Type: int_const 190000000000000000
+                     Source: "190 finney"
+              ExpressionStatement
+                 Source: "queueFront += 1"
+                Assignment using operator +=
+                   Type: uint256
+                   Source: "queueFront += 1"
+                  Identifier queueFront
+                     Type: uint256
+                     Source: "queueFront"
+                  Literal, token: [no token] value: 1
+                     Type: int_const 1
+                     Source: "1"
+      ExpressionStatement
+         Source: "Joined(msg.sender, entries, memberQueue.length * 2)"
+        FunctionCall
+           Type: tuple()
+           Source: "Joined(msg.sender, entries, memberQueue.length * 2)"
+          Identifier Joined
+             Type: function (address,uint256,uint256) constant
+             Source: "Joined"
+          MemberAccess to member sender
+             Type: address
+             Source: "msg.sender"
+            Identifier msg
+               Type: msg
+               Source: "msg"
+          Identifier entries
+             Type: uint256
+             Source: "entries"
+          BinaryOperation using operator *
+             Type: uint256
+             Source: "memberQueue.length * 2"
+            MemberAccess to member length
+               Type: uint256
+               Source: "memberQueue.length"
+              Identifier memberQueue
+                 Type: address[] storage ref
+                 Source: "memberQueue"
+            Literal, token: [no token] value: 2
+               Type: int_const 2
+               Source: "2"
+      VariableDeclarationStatement
+         Source: "uint remainder = msg.value - (entries * 100 finney)"
+        VariableDeclaration "remainder"
+           Type: uint256
+           Source: "uint remainder"
+          ElementaryTypeName uint
+             Source: "uint"
+        BinaryOperation using operator -
+           Type: uint256
+           Source: "msg.value - (entries * 100 finney)"
+          MemberAccess to member value
+             Type: uint256
+             Source: "msg.value"
+            Identifier msg
+               Type: msg
+               Source: "msg"
+          TupleExpression
+             Type: uint256
+             Source: "(entries * 100 finney)"
+            BinaryOperation using operator *
+               Type: uint256
+               Source: "entries * 100 finney"
+              Identifier entries
+                 Type: uint256
+                 Source: "entries"
+              Literal, token: [no token] value: 100
+                 Type: int_const 100000000000000000
+                 Source: "100 finney"
+      IfStatement
+         Source: "if (remainder > 1 finney) {\r\n            msg.sender.transfer(remainder);\r\n        }"
+        BinaryOperation using operator >
+           Type: bool
+           Source: "remainder > 1 finney"
+          Identifier remainder
+             Type: uint256
+             Source: "remainder"
+          Literal, token: [no token] value: 1
+             Type: int_const 1000000000000000
+             Source: "1 finney"
+        Block
+           Source: "{\r\n            msg.sender.transfer(remainder);\r\n        }"
+          ExpressionStatement
+             Source: "msg.sender.transfer(remainder)"
+            FunctionCall
+               Type: tuple()
+               Source: "msg.sender.transfer(remainder)"
+              MemberAccess to member transfer
+                 Type: function (uint256)
+                 Source: "msg.sender.transfer"
+                MemberAccess to member sender
+                   Type: address
+                   Source: "msg.sender"
+                  Identifier msg
+                     Type: msg
+                     Source: "msg"
+              Identifier remainder
+                 Type: uint256
+                 Source: "remainder"
+  FunctionDefinition "drain" - public
+     Source: "function drain() onlymaster {\r\n        master.transfer(this.balance);\r\n    }"
+    ParameterList
+       Source: "()"
+    ParameterList
+       Source: ""
+    ModifierInvocation "onlymaster"
+       Source: "onlymaster"
+      Identifier onlymaster
+         Type: modifier ()
+         Source: "onlymaster"
+    Block
+       Source: "{\r\n        master.transfer(this.balance);\r\n    }"
+      ExpressionStatement
+         Source: "master.transfer(this.balance)"
+        FunctionCall
+           Type: tuple()
+           Source: "master.transfer(this.balance)"
+          MemberAccess to member transfer
+             Type: function (uint256)
+             Source: "master.transfer"
+            Identifier master
+               Type: address
+               Source: "master"
+          MemberAccess to member balance
+             Type: uint256
+             Source: "this.balance"
+            Identifier this
+               Type: contract Pyramid
+               Source: "this"
+  FunctionDefinition "setMaster" - public
+     Source: "function setMaster(address _master) onlymaster {\r\n        master = _master;\r\n    }"
+    ParameterList
+       Source: "(address _master)"
+      VariableDeclaration "_master"
+         Type: address
+         Source: "address _master"
+        ElementaryTypeName address
+           Source: "address"
+    ParameterList
+       Source: ""
+    ModifierInvocation "onlymaster"
+       Source: "onlymaster"
+      Identifier onlymaster
+         Type: modifier ()
+         Source: "onlymaster"
+    Block
+       Source: "{\r\n        master = _master;\r\n    }"
+      ExpressionStatement
+         Source: "master = _master"
+        Assignment using operator =
+           Type: address
+           Source: "master = _master"
+          Identifier master
+             Type: address
+             Source: "master"
+          Identifier _master
+             Type: address
+             Source: "_master"

@@ -1,7 +1,6 @@
-var fs = require('fs')
 var Web3 = require('web3')
 var web3 = new Web3()
-web3.setProvider(new web3.providers.HttpProvider('http://192.168.1.117:8545'))
+web3.setProvider(new web3.providers.HttpProvider('http://localhost:8545'))
 
 var abi = JSON.parse(fs.readFileSync('bin/Pyramid.abi'))
 var Pyramid = web3.eth.contract(abi);
