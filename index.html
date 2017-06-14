@@ -7,7 +7,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.7.1/showdown.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flipclock/0.7.8/flipclock.min.js" integrity="sha256-zZFgUYWREnXJDw3PMQASiGmzHVL+VNfcA5eaXhipwag=" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="../dist/bundle.js"></script>
+    <script type="text/javascript" src="dist/bundle.js"></script>
 </head>
 
 
@@ -30,7 +30,7 @@ The Ethereum Pyramid Contract is a smart contract on the Ethereum block chain.
 
 This Ethereum Smart Contract is simple. When you send money to the address, you enter the back of the queue. Your money is then used to automatically pay the person in the front of the line. Once the person in the front of the line is paid twice, the process moves on to the next person and they will receive the next two payments from people entering the queue.
 
-![image](../static/Pyramid.png)
+![image](static/Pyramid.png)
 
 # What is a contract
 
@@ -47,7 +47,7 @@ You can put in any amount of Ethereum between .1 and 5 (do not worry about sendi
 
 ### If you use mist client your transaction should look like this
 (with any amount between .1 and 5)
-![mist](../static/Screenshot.png =700x700)
+![mist](static/Screenshot.png =700x700)
 
 # Checking your position in line
 After you make a transaction to the contract, paste your wallet address into the input field on the sidebar to the right. It will look up each of your entries and tell you by when you will have doubled your Ethereum for each of them.
@@ -206,7 +206,7 @@ The only risk involved in joining this project is if no one else joins after you
     }
     .counter {
         z-index: 9999;
-        background: black url("../static/banner.png") no-repeat top left;
+        background: black url("static/banner.png") no-repeat top left;
         height: 186px;
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
         text-align: center;
