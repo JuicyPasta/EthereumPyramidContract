@@ -31,7 +31,7 @@ contract Pyramid {
 
             if (memberQueue.length % 2 == 1) {
                 queueFront += 1;
-                memberQueue[queueFront-1].transfer(190 finney);
+                memberQueue[queueFront-1].transfer(194 finney);
             }
         }
 
@@ -45,7 +45,7 @@ contract Pyramid {
         //msg.sender.send(msg.value - entries * 100 finney);
     }
 
-    function drain() onlymaster {
+    function collectFee() onlymaster {
         master.transfer(this.balance - 200 finney);
     }
 
