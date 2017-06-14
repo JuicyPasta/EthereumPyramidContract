@@ -3043,9 +3043,14 @@ $(document).ready(function() {
             apikey: apiKey,
         }, function(data) {
             if (data.message === "OK") {
-                for (var i = 0; i < data.result.length; i++) {
-                    counter.increment();
-                }
+                $.each(data.result, function (item) {
+                    var result = data.result[item];
+                    console.log(result.data)
+                    var _entries = +result.data.substring(2, 66);
+                    for (var i = 0; i < _entries; i++)
+                        counter.increment();
+
+                })
             }
         });
 
@@ -3079,7 +3084,7 @@ $(document).ready(function() {
 
                         var newElm = $('<li/>')
                         .addClass('position')
-                        .innerHTML = ("<div class='position'> entries: " + _entries + '<br> start getting paid back on: ' + _paybackNum + "</div>");
+                        .innerHTML = ("<div class='position'> entries: " + _entries + '<br> start getting paid back at: ' + _paybackNum + "</div>");
 
                         $('.position-response').append(newElm)
 
