@@ -1,4 +1,4 @@
-var Web3 = require('web3');
+//var Web3 = require('web3');
 
 var showdown = require('showdown');
 
@@ -23,14 +23,16 @@ $(document).ready(function() {
 
 
     var apiKey = "18NSMDUY6IBA9QQYQVB8X4B8WFBCDYYJ16";
+    var contractAddress = "0xb978A5F4854274bc5196bC2a4633863CB3A0a6b7";
+    var blockCreated = '3869896';
 
     $.get("https://api.etherscan.io/api",
         {
             module: 'logs',
             action: 'getLogs',
-            fromBlock: '2000000',
+            fromBlock: blockCreated,
             toBlock: 'latest',
-            address:"0xa3cd526795430E251b66bdbD067E4B4AA9C1acbe",
+            address:contractAddress,
             apikey: apiKey,
         }, function(data) {
             if (data.message === "OK") {
@@ -44,37 +46,42 @@ $(document).ready(function() {
     $('.get-position').click(function(event) {
         $('.spinner').show();
 
-        var address = $('.address').val();
+        var address = $('#inputAddress').val();
 
         $.get("https://api.etherscan.io/api",
             {
                 module: 'logs',
                 action: 'getLogs',
-                fromBlock: '2000000',
+                fromBlock: blockCreated,
                 toBlock: 'latest',
-                address:"0xa3cd526795430E251b66bdbD067E4B4AA9C1acbe",
+                address:contractAddress,
+                topic1:"0x000000000000000000000000" + address.substring(2).toLowerCase(),
                 apikey: apiKey,
             }, function(data) {
-                console.log(data)
-                console.log(data)
-                console.log(data)
-                if (data.message === "OK") {
+
+                $(".no-data").hide();
+                $('.position-response').empty()
+
+                if (data.message === "OK" && data.result.length > 0) {
                     $.each(data.result, function (item) {
                         var result = data.result[item];
-                        console.log(result)
-                        if (result.address === address) {
-                            var newElm = $('<li/>')
-                            .addClass('position')
-                            .text('entries: ' + result.args._entries.c[0] + ' paid back by: ' + item.args._paybackStartNum.c[0])
+                        console.log(result.data)
+                        var _entries = + result.data.substring(2, 66);
+                        var _paybackNum = + result.data.substring(66);
+                        _paybackNum = _paybackNum - _entries * 2;
 
-                            $('position-response').append(newElm)
+                        var newElm = $('<li/>')
+                        .addClass('position')
+                        .innerHTML = ("<div class='position'> entries: " + _entries + '<br> start getting paid back at: ' + _paybackNum + "</div>");
 
-                            $('.spinner').hide();
-                        }
+                        $('.position-response').append(newElm)
+
                     })
+                }else {
+                    $(".no-data").show();
                 }
+                $('.spinner').hide();
             });
-
 
         // pyramid.Joined({_member: address}, {fromBlock: 0, toBlock:'latest'}).watch(function(err, result) {
         //     if (err) return;

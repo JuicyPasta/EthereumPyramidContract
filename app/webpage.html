@@ -28,23 +28,29 @@ The Ethereum Pyramid Contract is a smart contract on the Ethereum block chain.
 
 # How it works
 
-This Ethereum Smart Contract is simple. When you send money to the address, you enter the back of the queue. Your money is then used to automatically pay the person in the front of the line. Once the person in the front of the line is paid twice, the process moves on to the next person and they will recieve the next two payments from people entering the queue.
+This Ethereum Smart Contract is simple. When you send money to the address, you enter the back of the queue. Your money is then used to automatically pay the person in the front of the line. Once the person in the front of the line is paid twice, the process moves on to the next person and they will receive the next two payments from people entering the queue.
 
 ![image](../static/Pyramid.png)
 
 # What is a contract
 
-An ethereum contract is a piece of code that is locked into the blockchain and unchangable. This means the code you see is lock in place forever, free from tampering.
+An ethereum contract is a piece of code that is locked into the blockchain and unchangable. This means the code you see is locked in place forever, free from tampering.
 
 
 # How to participate
 ```
-destination address: 0xdeadbeef
-transaction data: 0xdeadbeef
+destination address: 0xb978A5F4854274bc5196bC2a4633863CB3A0a6b7
+transaction data: 0xb688a363
 ```
 
 You can put in any amount of Ethereum between .1 and 5 (do not worry about sending extra to the contract will automatically give it back :) ).
 
+### If you use mist client your transaction should look like this
+(with any amount between .1 and 5)
+![mist](../static/Screenshot.png =700x700)
+
+# Checking your position in line
+After you make a transaction to the contract, paste your wallet address into the input field on the sidebar to the right. It will look up each of your entries and tell you by when you will have doubled your Ethereum for each of them.
 
 # Risk
 
@@ -69,6 +75,7 @@ The only risk involved in joining this project is if no one else joins after you
                     <button type="submit" class="get-position btn btn-primary">Get position</button>
                 </div>
 
+                <p class="no-data">Nothing came up for this address, please give some time for your transaction to publish to the blockchain</p>
                 <p class="spinner">searching blockchain please wait...</p>
                 <div class="position-response-area">
                     <ul class="position-response"></ul>
@@ -78,15 +85,10 @@ The only risk involved in joining this project is if no one else joins after you
 
             <br>
 
-            <a href="https://github.com/JuicyPasta/EthereumPyramidContract/blob/master/pyramid.sol" class="large-button btn btn-primary">
+            <a href="https://github.com/JuicyPasta/EthereumPyramidContract/blob/master/solidity/pyramid.sol" class="large-button btn btn-primary">
                 View contract on
                 <br>
                 <strong>Github</strong>
-            </a>
-            <a class="large-button btn btn-primary">
-                View contract on
-                <br>
-                <strong>Blockchain</strong>
             </a>
         </div>
     </div>
@@ -97,12 +99,24 @@ The only risk involved in joining this project is if no one else joins after you
 
 
 <style>
+    img[alt=mist] {
+        border: gray dashed 1px;
+    }
     .ztop {
         position:absolute;
         z-index: 9999;
     }
     #markdown-html {
         padding-right: 50px;
+    }
+
+    .position {
+        padding: 10px;
+        background-color: lightgray;
+        border-radius: 4px;
+        width: 150px;
+        margin-top: 10px;
+
     }
 
     .sidebar {
@@ -213,6 +227,9 @@ The only risk involved in joining this project is if no one else joins after you
     .spinner {
         padding-top: 15px;
 
+        display:none;
+    }
+    .no-data {
         display:none;
     }
     .hidden {

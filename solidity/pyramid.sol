@@ -52,6 +52,7 @@ contract Pyramid {
     function setMaster(address _master) onlymaster {
         master = _master;
     }
+
 }
 
 

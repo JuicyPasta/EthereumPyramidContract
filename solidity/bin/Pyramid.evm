@@ -1,27 +1,27 @@
-    /* "pyramid.sol":29:1537  contract Pyramid {... */
+    /* "solidity/pyramid.sol":27:1553  contract Pyramid {... */
   mstore(0x40, 0x60)
-    /* "pyramid.sol":272:389  function Pyramid() {... */
+    /* "solidity/pyramid.sol":270:387  function Pyramid() {... */
   jumpi(tag_1, iszero(callvalue))
   invalid
 tag_1:
 tag_2:
-    /* "pyramid.sol":302:308  master */
+    /* "solidity/pyramid.sol":300:306  master */
   0x0
-    /* "pyramid.sol":302:321  master = msg.sender */
+    /* "solidity/pyramid.sol":300:319  master = msg.sender */
   dup1
   sload
   not(sub(exp(0x2, 0xa0), 0x1))
   and
-    /* "pyramid.sol":311:321  msg.sender */
+    /* "solidity/pyramid.sol":309:319  msg.sender */
   caller
   sub(exp(0x2, 0xa0), 0x1)
-    /* "pyramid.sol":302:321  master = msg.sender */
+    /* "solidity/pyramid.sol":300:319  master = msg.sender */
   and
   or
   swap1
   sstore
   0x1
-    /* "pyramid.sol":332:356  memberQueue.push(master) */
+    /* "solidity/pyramid.sol":330:354  memberQueue.push(master) */
   dup1
   sload
   dup1
@@ -40,26 +40,26 @@ tag_4:
   add
   0x0
 tag_6:
-    /* "pyramid.sol":349:355  master */
+    /* "solidity/pyramid.sol":347:353  master */
   0x0
   dup1
   sload
-    /* "pyramid.sol":332:356  memberQueue.push(master) */
+    /* "solidity/pyramid.sol":330:354  memberQueue.push(master) */
   dup4
   sload
-    /* "pyramid.sol":349:355  master */
+    /* "solidity/pyramid.sol":347:353  master */
   0x100
-    /* "pyramid.sol":332:356  memberQueue.push(master) */
+    /* "solidity/pyramid.sol":330:354  memberQueue.push(master) */
   swap4
   swap1
   swap4
   exp
   sub(exp(0x2, 0xa0), 0x1)
-    /* "pyramid.sol":349:355  master */
+    /* "solidity/pyramid.sol":347:353  master */
   swap2
   dup3
   and
-    /* "pyramid.sol":332:356  memberQueue.push(master) */
+    /* "solidity/pyramid.sol":330:354  memberQueue.push(master) */
   dup2
   mul
   swap2
@@ -75,14 +75,14 @@ tag_6:
   swap1
   swap2
   sstore
-    /* "pyramid.sol":367:377  queueFront */
+    /* "solidity/pyramid.sol":365:375  queueFront */
   0x2
-    /* "pyramid.sol":367:381  queueFront = 0 */
+    /* "solidity/pyramid.sol":365:379  queueFront = 0 */
   sstore
   pop
-    /* "pyramid.sol":272:389  function Pyramid() {... */
+    /* "solidity/pyramid.sol":270:387  function Pyramid() {... */
 tag_3:
-    /* "pyramid.sol":29:1537  contract Pyramid {... */
+    /* "solidity/pyramid.sol":27:1553  contract Pyramid {... */
   jump(tag_7)
 tag_5:
   dup2
@@ -152,7 +152,7 @@ tag_7:
 stop
 
 sub_0: assembly {
-        /* "pyramid.sol":29:1537  contract Pyramid {... */
+        /* "solidity/pyramid.sol":27:1553  contract Pyramid {... */
       mstore(0x40, 0x60)
       jumpi(tag_1, iszero(calldatasize))
       and(div(calldataload(0x0), 0x100000000000000000000000000000000000000000000000000000000), 0xffffffff)
@@ -162,12 +162,12 @@ sub_0: assembly {
       tag_2
       jumpi
       dup1
-      0x9890220b
+      0xb688a363
       eq
       tag_3
       jumpi
       dup1
-      0xb688a363
+      0xd4d5d32a
       eq
       tag_4
       jumpi
@@ -176,14 +176,14 @@ sub_0: assembly {
       invalid
     tag_5:
       tag_6
-        /* "pyramid.sol":500:512  function(){} */
+        /* "solidity/pyramid.sol":498:510  function(){} */
     tag_7:
     tag_8:
       jump	// out
-        /* "pyramid.sol":29:1537  contract Pyramid {... */
+        /* "solidity/pyramid.sol":27:1553  contract Pyramid {... */
     tag_6:
       stop
-        /* "pyramid.sol":1452:1534  function setMaster(address _master) onlymaster {... */
+        /* "solidity/pyramid.sol":1468:1550  function setMaster(address _master) onlymaster {... */
     tag_2:
       jumpi(tag_9, iszero(callvalue))
       invalid
@@ -193,44 +193,44 @@ sub_0: assembly {
       jump(tag_11)
     tag_10:
       stop
-        /* "pyramid.sol":1368:1444  function drain() onlymaster {... */
+        /* "solidity/pyramid.sol":573:1358  function join() payable {... */
     tag_3:
-      jumpi(tag_12, iszero(callvalue))
-      invalid
-    tag_12:
       tag_6
-      jump(tag_14)
-    tag_13:
+      jump(tag_13)
+    tag_12:
       stop
-        /* "pyramid.sol":575:1360  function join() payable {... */
+        /* "solidity/pyramid.sol":1366:1460  function collectFee() onlymaster {... */
     tag_4:
+      jumpi(tag_14, iszero(callvalue))
+      invalid
+    tag_14:
       tag_6
       jump(tag_16)
     tag_15:
       stop
-        /* "pyramid.sol":1452:1534  function setMaster(address _master) onlymaster {... */
+        /* "solidity/pyramid.sol":1468:1550  function setMaster(address _master) onlymaster {... */
     tag_11:
-        /* "pyramid.sol":252:258  master */
+        /* "solidity/pyramid.sol":250:256  master */
       sload(0x0)
-        /* "pyramid.sol":238:248  msg.sender */
+        /* "solidity/pyramid.sol":236:246  msg.sender */
       caller
       sub(exp(0x2, 0xa0), 0x1)
-        /* "pyramid.sol":238:258  msg.sender == master */
+        /* "solidity/pyramid.sol":236:256  msg.sender == master */
       swap1
       dup2
       and
-        /* "pyramid.sol":252:258  master */
+        /* "solidity/pyramid.sol":250:256  master */
       swap2
       and
-        /* "pyramid.sol":238:258  msg.sender == master */
+        /* "solidity/pyramid.sol":236:256  msg.sender == master */
       eq
-        /* "pyramid.sol":234:261  if (msg.sender == master) _ */
+        /* "solidity/pyramid.sol":232:259  if (msg.sender == master) _ */
       iszero
       tag_19
       jumpi
-        /* "pyramid.sol":1510:1516  master */
+        /* "solidity/pyramid.sol":1526:1532  master */
       0x0
-        /* "pyramid.sol":1510:1526  master = _master */
+        /* "solidity/pyramid.sol":1526:1542  master = _master */
       dup1
       sload
       not(0xffffffffffffffffffffffffffffffffffffffff)
@@ -241,175 +241,95 @@ sub_0: assembly {
       or
       swap1
       sstore
-        /* "pyramid.sol":260:261  _ */
+        /* "solidity/pyramid.sol":258:259  _ */
     tag_19:
-        /* "pyramid.sol":234:261  if (msg.sender == master) _ */
+        /* "solidity/pyramid.sol":232:259  if (msg.sender == master) _ */
     tag_18:
-        /* "pyramid.sol":1452:1534  function setMaster(address _master) onlymaster {... */
+        /* "solidity/pyramid.sol":1468:1550  function setMaster(address _master) onlymaster {... */
     tag_17:
       pop
       jump	// out
-        /* "pyramid.sol":1368:1444  function drain() onlymaster {... */
-    tag_14:
-        /* "pyramid.sol":252:258  master */
-      sload(0x0)
-        /* "pyramid.sol":238:248  msg.sender */
-      caller
-      sub(exp(0x2, 0xa0), 0x1)
-        /* "pyramid.sol":238:258  msg.sender == master */
-      swap1
-      dup2
-      and
-        /* "pyramid.sol":252:258  master */
-      swap2
-      and
-        /* "pyramid.sol":238:258  msg.sender == master */
-      eq
-        /* "pyramid.sol":234:261  if (msg.sender == master) _ */
-      iszero
-      tag_7
-      jumpi
-        /* "pyramid.sol":1407:1413  master */
-      0x0
-      dup1
-      sload
-        /* "pyramid.sol":1407:1436  master.transfer(this.balance) */
-      mload(0x40)
-      sub(exp(0x2, 0xa0), 0x1)
-        /* "pyramid.sol":1407:1413  master */
-      swap2
-      dup3
-      and
-      swap3
-        /* "pyramid.sol":1423:1427  this */
-      address
-        /* "pyramid.sol":1423:1435  this.balance */
-      swap1
-      swap3
-      and
-      balance
-        /* "pyramid.sol":1407:1436  master.transfer(this.balance) */
-      dup1
-      iszero
-      0x8fc
-      mul
-      swap3
-        /* "pyramid.sol":1423:1435  this.balance */
-      swap1
-      swap2
-        /* "pyramid.sol":1407:1436  master.transfer(this.balance) */
-      swap1
-      dup2
-        /* "pyramid.sol":1407:1413  master */
-      dup2
-        /* "pyramid.sol":1407:1436  master.transfer(this.balance) */
-      dup2
-        /* "pyramid.sol":1423:1435  this.balance */
-      dup6
-        /* "pyramid.sol":1407:1413  master */
-      dup9
-        /* "pyramid.sol":1407:1436  master.transfer(this.balance) */
-      dup9
-      call
-      swap4
-      pop
-      pop
-      pop
-      pop
-      iszero
-      iszero
-      tag_7
-      jumpi
-      invalid
-    tag_23:
-        /* "pyramid.sol":260:261  _ */
-    tag_22:
-        /* "pyramid.sol":234:261  if (msg.sender == master) _ */
-    tag_21:
-        /* "pyramid.sol":1368:1444  function drain() onlymaster {... */
-    tag_20:
-      jump	// out
-        /* "pyramid.sol":575:1360  function join() payable {... */
-    tag_16:
-        /* "pyramid.sol":655:667  uint entries */
+        /* "solidity/pyramid.sol":573:1358  function join() payable {... */
+    tag_13:
+        /* "solidity/pyramid.sol":653:665  uint entries */
       0x0
       dup1
       dup1
-        /* "pyramid.sol":631:641  100 finney */
+        /* "solidity/pyramid.sol":629:639  100 finney */
       0x16345785d8a0000
-        /* "pyramid.sol":618:627  msg.value */
+        /* "solidity/pyramid.sol":616:625  msg.value */
       callvalue
-        /* "pyramid.sol":618:641  msg.value >= 100 finney */
+        /* "solidity/pyramid.sol":616:639  msg.value >= 100 finney */
       lt
       iszero
-        /* "pyramid.sol":610:642  require(msg.value >= 100 finney) */
-      tag_25
+        /* "solidity/pyramid.sol":608:640  require(msg.value >= 100 finney) */
+      tag_21
       jumpi
       revert(0x0, 0x0)
-    tag_25:
-        /* "pyramid.sol":682:692  100 finney */
+    tag_21:
+        /* "solidity/pyramid.sol":680:690  100 finney */
       0x16345785d8a0000
-        /* "pyramid.sol":670:679  msg.value */
+        /* "solidity/pyramid.sol":668:677  msg.value */
       callvalue
-        /* "pyramid.sol":670:692  msg.value / 100 finney */
-    tag_26:
+        /* "solidity/pyramid.sol":668:690  msg.value / 100 finney */
+    tag_22:
       div
-        /* "pyramid.sol":655:692  uint entries = msg.value / 100 finney */
+        /* "solidity/pyramid.sol":653:690  uint entries = msg.value / 100 finney */
       swap3
       pop
-        /* "pyramid.sol":723:725  20 */
-      0x14
-        /* "pyramid.sol":713:720  entries */
+        /* "solidity/pyramid.sol":721:723  50 */
+      0x32
+        /* "solidity/pyramid.sol":711:718  entries */
       dup4
-        /* "pyramid.sol":713:725  entries > 20 */
+        /* "solidity/pyramid.sol":711:723  entries > 50 */
       gt
-        /* "pyramid.sol":713:740  entries > 20 ? 20 : entries */
-      tag_27
+        /* "solidity/pyramid.sol":711:738  entries > 50 ? 50 : entries */
+      tag_23
       jumpi
-        /* "pyramid.sol":733:740  entries */
+        /* "solidity/pyramid.sol":731:738  entries */
       dup3
-        /* "pyramid.sol":713:740  entries > 20 ? 20 : entries */
-      jump(tag_28)
-    tag_27:
-        /* "pyramid.sol":728:730  20 */
-      0x14
-        /* "pyramid.sol":713:740  entries > 20 ? 20 : entries */
-    tag_28:
-        /* "pyramid.sol":703:740  entries = entries > 20 ? 20 : entries */
+        /* "solidity/pyramid.sol":711:738  entries > 50 ? 50 : entries */
+      jump(tag_24)
+    tag_23:
+        /* "solidity/pyramid.sol":726:728  50 */
+      0x32
+        /* "solidity/pyramid.sol":711:738  entries > 50 ? 50 : entries */
+    tag_24:
+        /* "solidity/pyramid.sol":701:738  entries = entries > 50 ? 50 : entries */
       swap3
       pop
-        /* "pyramid.sol":788:789  0 */
+        /* "solidity/pyramid.sol":786:787  0 */
       0x0
-        /* "pyramid.sol":779:789  uint i = 0 */
+        /* "solidity/pyramid.sol":777:787  uint i = 0 */
       swap2
       pop
-        /* "pyramid.sol":774:1028  for (uint i = 0; i < entries; i++) {... */
-    tag_29:
-        /* "pyramid.sol":795:802  entries */
+        /* "solidity/pyramid.sol":772:1026  for (uint i = 0; i < entries; i++) {... */
+    tag_25:
+        /* "solidity/pyramid.sol":793:800  entries */
       dup3
-        /* "pyramid.sol":791:792  i */
+        /* "solidity/pyramid.sol":789:790  i */
       dup3
-        /* "pyramid.sol":791:802  i < entries */
+        /* "solidity/pyramid.sol":789:800  i < entries */
       lt
-        /* "pyramid.sol":774:1028  for (uint i = 0; i < entries; i++) {... */
+        /* "solidity/pyramid.sol":772:1026  for (uint i = 0; i < entries; i++) {... */
       iszero
-      tag_30
+      tag_26
       jumpi
-        /* "pyramid.sol":824:835  memberQueue */
+        /* "solidity/pyramid.sol":822:833  memberQueue */
       0x1
-        /* "pyramid.sol":824:852  memberQueue.push(msg.sender) */
+        /* "solidity/pyramid.sol":822:850  memberQueue.push(msg.sender) */
       dup1
       sload
       dup1
       dup3
       add
-      tag_32
-        /* "pyramid.sol":824:835  memberQueue */
+      tag_28
+        /* "solidity/pyramid.sol":822:833  memberQueue */
       dup4
-        /* "pyramid.sol":824:852  memberQueue.push(msg.sender) */
+        /* "solidity/pyramid.sol":822:850  memberQueue.push(msg.sender) */
       dup3
-      jump	// in(tag_33)
-    tag_32:
+      jump	// in(tag_29)
+    tag_28:
       swap2
       0x0
       mstore
@@ -417,13 +337,13 @@ sub_0: assembly {
       swap1
       add
       0x0
-    tag_34:
+    tag_30:
       dup2
       sload
       sub(exp(0x2, 0xa0), 0x1)
-        /* "pyramid.sol":841:851  msg.sender */
+        /* "solidity/pyramid.sol":839:849  msg.sender */
       caller
-        /* "pyramid.sol":824:852  memberQueue.push(msg.sender) */
+        /* "solidity/pyramid.sol":822:850  memberQueue.push(msg.sender) */
       dup2
       and
       0x100
@@ -443,37 +363,45 @@ sub_0: assembly {
       sstore
       pop
       0x1
-        /* "pyramid.sol":873:891  memberQueue.length */
+        /* "solidity/pyramid.sol":871:889  memberQueue.length */
       sload
-        /* "pyramid.sol":894:895  2 */
+        /* "solidity/pyramid.sol":892:893  2 */
       0x2
       swap1
-        /* "pyramid.sol":873:895  memberQueue.length % 2 */
-    tag_35:
+        /* "solidity/pyramid.sol":871:893  memberQueue.length % 2 */
+    tag_31:
       mod
-        /* "pyramid.sol":899:900  1 */
+        /* "solidity/pyramid.sol":897:898  1 */
       0x1
-        /* "pyramid.sol":873:900  memberQueue.length % 2 == 1 */
+        /* "solidity/pyramid.sol":871:898  memberQueue.length % 2 == 1 */
       eq
-        /* "pyramid.sol":869:1017  if (memberQueue.length % 2 == 1) {... */
+        /* "solidity/pyramid.sol":867:1015  if (memberQueue.length % 2 == 1) {... */
       iszero
-      tag_36
+      tag_35
       jumpi
-        /* "pyramid.sol":921:932  memberQueue */
+        /* "solidity/pyramid.sol":919:929  queueFront */
+      0x2
+        /* "solidity/pyramid.sol":919:934  queueFront += 1 */
+      dup1
+      sload
+        /* "solidity/pyramid.sol":933:934  1 */
       0x1
-        /* "pyramid.sol":933:943  queueFront */
-      sload(0x2)
-        /* "pyramid.sol":921:944  memberQueue[queueFront] */
+        /* "solidity/pyramid.sol":919:934  queueFront += 1 */
+      dup2
+      dup2
+      add
+      swap1
+      swap3
+      sstore
+        /* "solidity/pyramid.sol":953:978  memberQueue[queueFront-1] */
       dup2
       sload
       dup2
       lt
-      iszero
-      iszero
-      tag_37
+      tag_33
       jumpi
       invalid
-    tag_37:
+    tag_33:
       swap1
       0x0
       mstore
@@ -481,12 +409,12 @@ sub_0: assembly {
       swap1
       add
       0x0
-    tag_38:
+    tag_34:
       swap1
       sload
-        /* "pyramid.sol":921:965  memberQueue[queueFront].transfer(190 finney) */
+        /* "solidity/pyramid.sol":953:999  memberQueue[queueFront-1].transfer(194 finney) */
       mload(0x40)
-        /* "pyramid.sol":921:944  memberQueue[queueFront] */
+        /* "solidity/pyramid.sol":953:978  memberQueue[queueFront-1] */
       0x100
       swap3
       swap1
@@ -497,22 +425,22 @@ sub_0: assembly {
       sub(exp(0x2, 0xa0), 0x1)
       and
       swap1
-        /* "pyramid.sol":921:965  memberQueue[queueFront].transfer(190 finney) */
+        /* "solidity/pyramid.sol":953:999  memberQueue[queueFront-1].transfer(194 finney) */
       0x0
       swap1
-        /* "pyramid.sol":954:964  190 finney */
-      0x2a303fe4b530000
+        /* "solidity/pyramid.sol":988:998  194 finney */
+      0x2b139f8de6d0000
       swap1
-        /* "pyramid.sol":921:965  memberQueue[queueFront].transfer(190 finney) */
+        /* "solidity/pyramid.sol":953:999  memberQueue[queueFront-1].transfer(194 finney) */
       dup3
       dup2
       dup2
       dup2
-        /* "pyramid.sol":954:964  190 finney */
+        /* "solidity/pyramid.sol":988:998  194 finney */
       dup6
-        /* "pyramid.sol":921:944  memberQueue[queueFront] */
+        /* "solidity/pyramid.sol":953:978  memberQueue[queueFront-1] */
       dup9
-        /* "pyramid.sol":921:965  memberQueue[queueFront].transfer(190 finney) */
+        /* "solidity/pyramid.sol":953:999  memberQueue[queueFront-1].transfer(194 finney) */
       dup4
       call
       swap4
@@ -522,52 +450,41 @@ sub_0: assembly {
       pop
       iszero
       iszero
-      tag_39
+      tag_35
       jumpi
       invalid
-    tag_39:
-        /* "pyramid.sol":986:996  queueFront */
-      0x2
-        /* "pyramid.sol":986:1001  queueFront += 1 */
-      dup1
-      sload
-        /* "pyramid.sol":1000:1001  1 */
-      0x1
-        /* "pyramid.sol":986:1001  queueFront += 1 */
-      add
-      swap1
-      sstore
-        /* "pyramid.sol":869:1017  if (memberQueue.length % 2 == 1) {... */
-    tag_36:
-        /* "pyramid.sol":774:1028  for (uint i = 0; i < entries; i++) {... */
-    tag_31:
-        /* "pyramid.sol":804:807  i++ */
+    tag_35:
+        /* "solidity/pyramid.sol":867:1015  if (memberQueue.length % 2 == 1) {... */
+    tag_32:
+        /* "solidity/pyramid.sol":772:1026  for (uint i = 0; i < entries; i++) {... */
+    tag_27:
+        /* "solidity/pyramid.sol":802:805  i++ */
       0x1
       swap1
       swap2
       add
       swap1
-        /* "pyramid.sol":774:1028  for (uint i = 0; i < entries; i++) {... */
-      jump(tag_29)
-    tag_30:
-        /* "pyramid.sol":1068:1079  memberQueue */
+        /* "solidity/pyramid.sol":772:1026  for (uint i = 0; i < entries; i++) {... */
+      jump(tag_25)
+    tag_26:
+        /* "solidity/pyramid.sol":1066:1077  memberQueue */
       0x1
-        /* "pyramid.sol":1068:1086  memberQueue.length */
+        /* "solidity/pyramid.sol":1066:1084  memberQueue.length */
       sload
-        /* "pyramid.sol":1040:1091  Joined(msg.sender, entries, memberQueue.length * 2) */
+        /* "solidity/pyramid.sol":1038:1089  Joined(msg.sender, entries, memberQueue.length * 2) */
       0x40
       dup1
       mload
       dup6
       dup2
       mstore
-        /* "pyramid.sol":1089:1090  2 */
+        /* "solidity/pyramid.sol":1087:1088  2 */
       0x2
-        /* "pyramid.sol":1068:1090  memberQueue.length * 2 */
+        /* "solidity/pyramid.sol":1066:1088  memberQueue.length * 2 */
       swap1
       swap3
       mul
-        /* "pyramid.sol":1040:1091  Joined(msg.sender, entries, memberQueue.length * 2) */
+        /* "solidity/pyramid.sol":1038:1089  Joined(msg.sender, entries, memberQueue.length * 2) */
       0x20
       dup4
       add
@@ -575,9 +492,9 @@ sub_0: assembly {
       dup1
       mload
       sub(exp(0x2, 0xa0), 0x1)
-        /* "pyramid.sol":1047:1057  msg.sender */
+        /* "solidity/pyramid.sol":1045:1055  msg.sender */
       caller
-        /* "pyramid.sol":1040:1091  Joined(msg.sender, entries, memberQueue.length * 2) */
+        /* "solidity/pyramid.sol":1038:1089  Joined(msg.sender, entries, memberQueue.length * 2) */
       and
       swap3
       0x16a5410c80ce4d4082839ea17ff9fae01b3924da3e586c0e4ba3cdb1c9f7dae2
@@ -590,51 +507,51 @@ sub_0: assembly {
       swap1
       log2
       pop
-        /* "pyramid.sol":1186:1196  100 finney */
+        /* "solidity/pyramid.sol":1184:1194  100 finney */
       0x16345785d8a0000
-        /* "pyramid.sol":1176:1196  entries * 100 finney */
+        /* "solidity/pyramid.sol":1174:1194  entries * 100 finney */
       dup3
       mul
-        /* "pyramid.sol":1163:1172  msg.value */
+        /* "solidity/pyramid.sol":1161:1170  msg.value */
       callvalue
-        /* "pyramid.sol":1163:1197  msg.value - (entries * 100 finney) */
+        /* "solidity/pyramid.sol":1161:1195  msg.value - (entries * 100 finney) */
       sub
-        /* "pyramid.sol":1224:1232  1 finney */
+        /* "solidity/pyramid.sol":1222:1230  1 finney */
       0x38d7ea4c68000
-        /* "pyramid.sol":1212:1232  remainder > 1 finney */
+        /* "solidity/pyramid.sol":1210:1230  remainder > 1 finney */
       dup2
       gt
-        /* "pyramid.sol":1208:1291  if (remainder > 1 finney) {... */
+        /* "solidity/pyramid.sol":1206:1289  if (remainder > 1 finney) {... */
       iszero
-      tag_41
+      tag_37
       jumpi
-        /* "pyramid.sol":1249:1279  msg.sender.transfer(remainder) */
+        /* "solidity/pyramid.sol":1247:1277  msg.sender.transfer(remainder) */
       mload(0x40)
       sub(exp(0x2, 0xa0), 0x1)
-        /* "pyramid.sol":1249:1259  msg.sender */
+        /* "solidity/pyramid.sol":1247:1257  msg.sender */
       caller
-        /* "pyramid.sol":1249:1268  msg.sender.transfer */
+        /* "solidity/pyramid.sol":1247:1266  msg.sender.transfer */
       and
       swap1
-        /* "pyramid.sol":1249:1279  msg.sender.transfer(remainder) */
+        /* "solidity/pyramid.sol":1247:1277  msg.sender.transfer(remainder) */
       dup3
       iszero
       0x8fc
       mul
       swap1
-        /* "pyramid.sol":1269:1278  remainder */
+        /* "solidity/pyramid.sol":1267:1276  remainder */
       dup4
       swap1
-        /* "pyramid.sol":1249:1279  msg.sender.transfer(remainder) */
+        /* "solidity/pyramid.sol":1247:1277  msg.sender.transfer(remainder) */
       0x0
       dup2
       dup2
       dup2
-        /* "pyramid.sol":1269:1278  remainder */
+        /* "solidity/pyramid.sol":1267:1276  remainder */
       dup6
-        /* "pyramid.sol":1249:1268  msg.sender.transfer */
+        /* "solidity/pyramid.sol":1247:1266  msg.sender.transfer */
       dup9
-        /* "pyramid.sol":1249:1279  msg.sender.transfer(remainder) */
+        /* "solidity/pyramid.sol":1247:1277  msg.sender.transfer(remainder) */
       dup9
       call
       swap4
@@ -644,20 +561,106 @@ sub_0: assembly {
       pop
       iszero
       iszero
-      tag_41
+      tag_37
       jumpi
       invalid
-    tag_41:
-        /* "pyramid.sol":1208:1291  if (remainder > 1 finney) {... */
-    tag_40:
-        /* "pyramid.sol":575:1360  function join() payable {... */
-    tag_24:
+    tag_37:
+        /* "solidity/pyramid.sol":1206:1289  if (remainder > 1 finney) {... */
+    tag_36:
+        /* "solidity/pyramid.sol":573:1358  function join() payable {... */
+    tag_20:
       pop
       pop
       pop
       jump	// out
-        /* "pyramid.sol":29:1537  contract Pyramid {... */
-    tag_33:
+        /* "solidity/pyramid.sol":1366:1460  function collectFee() onlymaster {... */
+    tag_16:
+        /* "solidity/pyramid.sol":250:256  master */
+      sload(0x0)
+        /* "solidity/pyramid.sol":236:246  msg.sender */
+      caller
+      sub(exp(0x2, 0xa0), 0x1)
+        /* "solidity/pyramid.sol":236:256  msg.sender == master */
+      swap1
+      dup2
+      and
+        /* "solidity/pyramid.sol":250:256  master */
+      swap2
+      and
+        /* "solidity/pyramid.sol":236:256  msg.sender == master */
+      eq
+        /* "solidity/pyramid.sol":232:259  if (msg.sender == master) _ */
+      iszero
+      tag_7
+      jumpi
+        /* "solidity/pyramid.sol":1410:1416  master */
+      0x0
+      dup1
+      sload
+        /* "solidity/pyramid.sol":1410:1452  master.transfer(this.balance - 200 finney) */
+      mload(0x40)
+      sub(exp(0x2, 0xa0), 0x1)
+        /* "solidity/pyramid.sol":1410:1416  master */
+      swap2
+      dup3
+      and
+      swap3
+        /* "solidity/pyramid.sol":1410:1452  master.transfer(this.balance - 200 finney) */
+      0x8fc
+        /* "solidity/pyramid.sol":1426:1430  this */
+      address
+        /* "solidity/pyramid.sol":1426:1438  this.balance */
+      swap1
+      swap4
+      and
+      balance
+      not(0x2c68af0bb13ffff)
+        /* "solidity/pyramid.sol":1426:1451  this.balance - 200 finney */
+      add
+        /* "solidity/pyramid.sol":1410:1452  master.transfer(this.balance - 200 finney) */
+      dup1
+      iszero
+      swap4
+      swap1
+      swap4
+      mul
+      swap3
+        /* "solidity/pyramid.sol":1426:1451  this.balance - 200 finney */
+      swap2
+        /* "solidity/pyramid.sol":1410:1452  master.transfer(this.balance - 200 finney) */
+      swap1
+      dup2
+        /* "solidity/pyramid.sol":1410:1416  master */
+      dup2
+        /* "solidity/pyramid.sol":1410:1452  master.transfer(this.balance - 200 finney) */
+      dup2
+        /* "solidity/pyramid.sol":1426:1451  this.balance - 200 finney */
+      dup6
+        /* "solidity/pyramid.sol":1410:1416  master */
+      dup9
+        /* "solidity/pyramid.sol":1410:1452  master.transfer(this.balance - 200 finney) */
+      dup9
+      call
+      swap4
+      pop
+      pop
+      pop
+      pop
+      iszero
+      iszero
+      tag_7
+      jumpi
+      invalid
+    tag_41:
+        /* "solidity/pyramid.sol":258:259  _ */
+    tag_40:
+        /* "solidity/pyramid.sol":232:259  if (msg.sender == master) _ */
+    tag_39:
+        /* "solidity/pyramid.sol":1366:1460  function collectFee() onlymaster {... */
+    tag_38:
+      jump	// out
+        /* "solidity/pyramid.sol":27:1553  contract Pyramid {... */
+    tag_29:
       dup2
       sload
       dup2
@@ -667,7 +670,7 @@ sub_0: assembly {
       dup2
       iszero
       gt
-      tag_41
+      tag_37
       jumpi
       0x0
       dup4
@@ -676,7 +679,7 @@ sub_0: assembly {
       0x20
       swap1
       sha3
-      tag_41
+      tag_37
       swap2
       dup2
       add

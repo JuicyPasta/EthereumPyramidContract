@@ -1,7 +1,7 @@
 PragmaDirective
    Source: "pragma solidity ^0.4.0;"
 ContractDefinition "Pyramid"
-   Source: "contract Pyramid {\r\n    address master;\r\n\r\n    address[] memberQueue;\r\n    uint queueFront;\r\n\r\n    event Joined(address indexed _member, uint _entries, uint _paybackStartNum);\r\n\r\n    modifier onlymaster { if (msg.sender == master) _; }\r\n\r\n    function Pyramid() {\r\n        master = msg.sender;\r\n        memberQueue.push(master);\r\n        queueFront = 0;\r\n    }\r\n\r\n    // fallback function, wont work to call join here bc we will run out of gas (2300 gas for send())\r\n    function(){}\r\n\r\n    // users are allowed to join with .1 - 2 ethereum\r\n    function join() payable {\r\n        require(msg.value >= 100 finney);\r\n\r\n        uint entries = msg.value / 100 finney;\r\n        entries = entries > 20 ? 20 : entries; // cap at 2 ethereum\r\n\r\n        for (uint i = 0; i < entries; i++) {\r\n            memberQueue.push(msg.sender);\r\n\r\n            if (memberQueue.length % 2 == 1) {\r\n                memberQueue[queueFront].transfer(190 finney);\r\n\r\n                queueFront += 1;\r\n            }\r\n        }\r\n\r\n        Joined(msg.sender, entries, memberQueue.length * 2);\r\n\r\n        // send back any unused ethereum\r\n        uint remainder = msg.value - (entries * 100 finney);\r\n        if (remainder > 1 finney) {\r\n            msg.sender.transfer(remainder);\r\n        }\r\n        //msg.sender.send(msg.value - entries * 100 finney);\r\n    }\r\n\r\n    function drain() onlymaster {\r\n        master.transfer(this.balance);\r\n    }\r\n\r\n    function setMaster(address _master) onlymaster {\r\n        master = _master;\r\n    }\r\n}"
+   Source: "contract Pyramid {\r\n    address master;\r\n\r\n    address[] memberQueue;\r\n    uint queueFront;\r\n\r\n    event Joined(address indexed _member, uint _entries, uint _paybackStartNum);\r\n\r\n    modifier onlymaster { if (msg.sender == master) _; }\r\n\r\n    function Pyramid() {\r\n        master = msg.sender;\r\n        memberQueue.push(master);\r\n        queueFront = 0;\r\n    }\r\n\r\n    // fallback function, wont work to call join here bc we will run out of gas (2300 gas for send())\r\n    function(){}\r\n\r\n    // users are allowed to join with .1 - 5 ethereum\r\n    function join() payable {\r\n        require(msg.value >= 100 finney);\r\n\r\n        uint entries = msg.value / 100 finney;\r\n        entries = entries > 50 ? 50 : entries; // cap at 5 ethereum\r\n\r\n        for (uint i = 0; i < entries; i++) {\r\n            memberQueue.push(msg.sender);\r\n\r\n            if (memberQueue.length % 2 == 1) {\r\n                queueFront += 1;\r\n                memberQueue[queueFront-1].transfer(194 finney);\r\n            }\r\n        }\r\n\r\n        Joined(msg.sender, entries, memberQueue.length * 2);\r\n\r\n        // send back any unused ethereum\r\n        uint remainder = msg.value - (entries * 100 finney);\r\n        if (remainder > 1 finney) {\r\n            msg.sender.transfer(remainder);\r\n        }\r\n        //msg.sender.send(msg.value - entries * 100 finney);\r\n    }\r\n\r\n    function collectFee() onlymaster {\r\n        master.transfer(this.balance - 200 finney);\r\n    }\r\n\r\n    function setMaster(address _master) onlymaster {\r\n        master = _master;\r\n    }\r\n}"
   VariableDeclaration "master"
      Type: address
      Source: "address master"
@@ -116,13 +116,13 @@ ContractDefinition "Pyramid"
     Block
        Source: "{}"
   FunctionDefinition "join" - public
-     Source: "function join() payable {\r\n        require(msg.value >= 100 finney);\r\n\r\n        uint entries = msg.value / 100 finney;\r\n        entries = entries > 20 ? 20 : entries; // cap at 2 ethereum\r\n\r\n        for (uint i = 0; i < entries; i++) {\r\n            memberQueue.push(msg.sender);\r\n\r\n            if (memberQueue.length % 2 == 1) {\r\n                memberQueue[queueFront].transfer(190 finney);\r\n\r\n                queueFront += 1;\r\n            }\r\n        }\r\n\r\n        Joined(msg.sender, entries, memberQueue.length * 2);\r\n\r\n        // send back any unused ethereum\r\n        uint remainder = msg.value - (entries * 100 finney);\r\n        if (remainder > 1 finney) {\r\n            msg.sender.transfer(remainder);\r\n        }\r\n        //msg.sender.send(msg.value - entries * 100 finney);\r\n    }"
+     Source: "function join() payable {\r\n        require(msg.value >= 100 finney);\r\n\r\n        uint entries = msg.value / 100 finney;\r\n        entries = entries > 50 ? 50 : entries; // cap at 5 ethereum\r\n\r\n        for (uint i = 0; i < entries; i++) {\r\n            memberQueue.push(msg.sender);\r\n\r\n            if (memberQueue.length % 2 == 1) {\r\n                queueFront += 1;\r\n                memberQueue[queueFront-1].transfer(194 finney);\r\n            }\r\n        }\r\n\r\n        Joined(msg.sender, entries, memberQueue.length * 2);\r\n\r\n        // send back any unused ethereum\r\n        uint remainder = msg.value - (entries * 100 finney);\r\n        if (remainder > 1 finney) {\r\n            msg.sender.transfer(remainder);\r\n        }\r\n        //msg.sender.send(msg.value - entries * 100 finney);\r\n    }"
     ParameterList
        Source: "()"
     ParameterList
        Source: ""
     Block
-       Source: "{\r\n        require(msg.value >= 100 finney);\r\n\r\n        uint entries = msg.value / 100 finney;\r\n        entries = entries > 20 ? 20 : entries; // cap at 2 ethereum\r\n\r\n        for (uint i = 0; i < entries; i++) {\r\n            memberQueue.push(msg.sender);\r\n\r\n            if (memberQueue.length % 2 == 1) {\r\n                memberQueue[queueFront].transfer(190 finney);\r\n\r\n                queueFront += 1;\r\n            }\r\n        }\r\n\r\n        Joined(msg.sender, entries, memberQueue.length * 2);\r\n\r\n        // send back any unused ethereum\r\n        uint remainder = msg.value - (entries * 100 finney);\r\n        if (remainder > 1 finney) {\r\n            msg.sender.transfer(remainder);\r\n        }\r\n        //msg.sender.send(msg.value - entries * 100 finney);\r\n    }"
+       Source: "{\r\n        require(msg.value >= 100 finney);\r\n\r\n        uint entries = msg.value / 100 finney;\r\n        entries = entries > 50 ? 50 : entries; // cap at 5 ethereum\r\n\r\n        for (uint i = 0; i < entries; i++) {\r\n            memberQueue.push(msg.sender);\r\n\r\n            if (memberQueue.length % 2 == 1) {\r\n                queueFront += 1;\r\n                memberQueue[queueFront-1].transfer(194 finney);\r\n            }\r\n        }\r\n\r\n        Joined(msg.sender, entries, memberQueue.length * 2);\r\n\r\n        // send back any unused ethereum\r\n        uint remainder = msg.value - (entries * 100 finney);\r\n        if (remainder > 1 finney) {\r\n            msg.sender.transfer(remainder);\r\n        }\r\n        //msg.sender.send(msg.value - entries * 100 finney);\r\n    }"
       ExpressionStatement
          Source: "require(msg.value >= 100 finney)"
         FunctionCall
@@ -163,33 +163,33 @@ ContractDefinition "Pyramid"
              Type: int_const 100000000000000000
              Source: "100 finney"
       ExpressionStatement
-         Source: "entries = entries > 20 ? 20 : entries"
+         Source: "entries = entries > 50 ? 50 : entries"
         Assignment using operator =
            Type: uint256
-           Source: "entries = entries > 20 ? 20 : entries"
+           Source: "entries = entries > 50 ? 50 : entries"
           Identifier entries
              Type: uint256
              Source: "entries"
           Conditional
              Type: uint256
-             Source: "entries > 20 ? 20 : entries"
+             Source: "entries > 50 ? 50 : entries"
             BinaryOperation using operator >
                Type: bool
-               Source: "entries > 20"
+               Source: "entries > 50"
               Identifier entries
                  Type: uint256
                  Source: "entries"
-              Literal, token: [no token] value: 20
-                 Type: int_const 20
-                 Source: "20"
-            Literal, token: [no token] value: 20
-               Type: int_const 20
-               Source: "20"
+              Literal, token: [no token] value: 50
+                 Type: int_const 50
+                 Source: "50"
+            Literal, token: [no token] value: 50
+               Type: int_const 50
+               Source: "50"
             Identifier entries
                Type: uint256
                Source: "entries"
       ForStatement
-         Source: "for (uint i = 0; i < entries; i++) {\r\n            memberQueue.push(msg.sender);\r\n\r\n            if (memberQueue.length % 2 == 1) {\r\n                memberQueue[queueFront].transfer(190 finney);\r\n\r\n                queueFront += 1;\r\n            }\r\n        }"
+         Source: "for (uint i = 0; i < entries; i++) {\r\n            memberQueue.push(msg.sender);\r\n\r\n            if (memberQueue.length % 2 == 1) {\r\n                queueFront += 1;\r\n                memberQueue[queueFront-1].transfer(194 finney);\r\n            }\r\n        }"
         VariableDeclarationStatement
            Source: "uint i = 0"
           VariableDeclaration "i"
@@ -218,7 +218,7 @@ ContractDefinition "Pyramid"
                Type: uint256
                Source: "i"
         Block
-           Source: "{\r\n            memberQueue.push(msg.sender);\r\n\r\n            if (memberQueue.length % 2 == 1) {\r\n                memberQueue[queueFront].transfer(190 finney);\r\n\r\n                queueFront += 1;\r\n            }\r\n        }"
+           Source: "{\r\n            memberQueue.push(msg.sender);\r\n\r\n            if (memberQueue.length % 2 == 1) {\r\n                queueFront += 1;\r\n                memberQueue[queueFront-1].transfer(194 finney);\r\n            }\r\n        }"
           ExpressionStatement
              Source: "memberQueue.push(msg.sender)"
             FunctionCall
@@ -237,7 +237,7 @@ ContractDefinition "Pyramid"
                    Type: msg
                    Source: "msg"
           IfStatement
-             Source: "if (memberQueue.length % 2 == 1) {\r\n                memberQueue[queueFront].transfer(190 finney);\r\n\r\n                queueFront += 1;\r\n            }"
+             Source: "if (memberQueue.length % 2 == 1) {\r\n                queueFront += 1;\r\n                memberQueue[queueFront-1].transfer(194 finney);\r\n            }"
             BinaryOperation using operator ==
                Type: bool
                Source: "memberQueue.length % 2 == 1"
@@ -257,27 +257,7 @@ ContractDefinition "Pyramid"
                  Type: int_const 1
                  Source: "1"
             Block
-               Source: "{\r\n                memberQueue[queueFront].transfer(190 finney);\r\n\r\n                queueFront += 1;\r\n            }"
-              ExpressionStatement
-                 Source: "memberQueue[queueFront].transfer(190 finney)"
-                FunctionCall
-                   Type: tuple()
-                   Source: "memberQueue[queueFront].transfer(190 finney)"
-                  MemberAccess to member transfer
-                     Type: function (uint256)
-                     Source: "memberQueue[queueFront].transfer"
-                    IndexAccess
-                       Type: address
-                       Source: "memberQueue[queueFront]"
-                      Identifier memberQueue
-                         Type: address[] storage ref
-                         Source: "memberQueue"
-                      Identifier queueFront
-                         Type: uint256
-                         Source: "queueFront"
-                  Literal, token: [no token] value: 190
-                     Type: int_const 190000000000000000
-                     Source: "190 finney"
+               Source: "{\r\n                queueFront += 1;\r\n                memberQueue[queueFront-1].transfer(194 finney);\r\n            }"
               ExpressionStatement
                  Source: "queueFront += 1"
                 Assignment using operator +=
@@ -289,6 +269,32 @@ ContractDefinition "Pyramid"
                   Literal, token: [no token] value: 1
                      Type: int_const 1
                      Source: "1"
+              ExpressionStatement
+                 Source: "memberQueue[queueFront-1].transfer(194 finney)"
+                FunctionCall
+                   Type: tuple()
+                   Source: "memberQueue[queueFront-1].transfer(194 finney)"
+                  MemberAccess to member transfer
+                     Type: function (uint256)
+                     Source: "memberQueue[queueFront-1].transfer"
+                    IndexAccess
+                       Type: address
+                       Source: "memberQueue[queueFront-1]"
+                      Identifier memberQueue
+                         Type: address[] storage ref
+                         Source: "memberQueue"
+                      BinaryOperation using operator -
+                         Type: uint256
+                         Source: "queueFront-1"
+                        Identifier queueFront
+                           Type: uint256
+                           Source: "queueFront"
+                        Literal, token: [no token] value: 1
+                           Type: int_const 1
+                           Source: "1"
+                  Literal, token: [no token] value: 194
+                     Type: int_const 194000000000000000
+                     Source: "194 finney"
       ExpressionStatement
          Source: "Joined(msg.sender, entries, memberQueue.length * 2)"
         FunctionCall
@@ -376,8 +382,8 @@ ContractDefinition "Pyramid"
               Identifier remainder
                  Type: uint256
                  Source: "remainder"
-  FunctionDefinition "drain" - public
-     Source: "function drain() onlymaster {\r\n        master.transfer(this.balance);\r\n    }"
+  FunctionDefinition "collectFee" - public
+     Source: "function collectFee() onlymaster {\r\n        master.transfer(this.balance - 200 finney);\r\n    }"
     ParameterList
        Source: "()"
     ParameterList
@@ -388,24 +394,30 @@ ContractDefinition "Pyramid"
          Type: modifier ()
          Source: "onlymaster"
     Block
-       Source: "{\r\n        master.transfer(this.balance);\r\n    }"
+       Source: "{\r\n        master.transfer(this.balance - 200 finney);\r\n    }"
       ExpressionStatement
-         Source: "master.transfer(this.balance)"
+         Source: "master.transfer(this.balance - 200 finney)"
         FunctionCall
            Type: tuple()
-           Source: "master.transfer(this.balance)"
+           Source: "master.transfer(this.balance - 200 finney)"
           MemberAccess to member transfer
              Type: function (uint256)
              Source: "master.transfer"
             Identifier master
                Type: address
                Source: "master"
-          MemberAccess to member balance
+          BinaryOperation using operator -
              Type: uint256
-             Source: "this.balance"
-            Identifier this
-               Type: contract Pyramid
-               Source: "this"
+             Source: "this.balance - 200 finney"
+            MemberAccess to member balance
+               Type: uint256
+               Source: "this.balance"
+              Identifier this
+                 Type: contract Pyramid
+                 Source: "this"
+            Literal, token: [no token] value: 200
+               Type: int_const 200000000000000000
+               Source: "200 finney"
   FunctionDefinition "setMaster" - public
      Source: "function setMaster(address _master) onlymaster {\r\n        master = _master;\r\n    }"
     ParameterList
